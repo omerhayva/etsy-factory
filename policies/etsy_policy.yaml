@@ -1,0 +1,78 @@
+policy:
+  platform: etsy
+  disclosure:
+    ai_assisted_placeholder: "[AI_DISCLOSURE_PLACEHOLDER]"
+    production_partner_placeholder: "[PRODUCTION_PARTNER_PLACEHOLDER]"
+  listing_requirements:
+    required_sections:
+      - product_overview
+      - features
+      - benefits
+      - gift_occasions
+      - materials
+      - care_instructions
+      - production_notes
+      - shipping_information
+      - production_partner
+      - ai_disclosure
+      - faq
+      - call_to_action
+    min_description_length: 450
+    max_title_length: 140
+    required_tag_count: 13
+    max_tag_length: 20
+  spam_rules:
+    max_keyword_repeat_per_word: 3
+    blocked_phrases:
+      - "100% guaranteed"
+      - "instant cure"
+      - "miracle result"
+      - "limited forever"
+      - "buy now or regret"
+    clickbait_patterns:
+      - "you won't believe"
+      - "shocking"
+      - "secret"
+  restricted_claim_rules:
+    medical_claim_patterns:
+      - "heals"
+      - "cures"
+      - "treats"
+      - "therapy guarantee"
+    misleading_patterns:
+      - "officially licensed"
+      - "exclusive partnership"
+      - "authentic brand"
+  trademark_risk:
+    high_risk_terms:
+      - "disney"
+      - "marvel"
+      - "nike"
+      - "adidas"
+      - "pokemon"
+      - "harry potter"
+      - "star wars"
+      - "fifa"
+      - "nba"
+      - "barbie"
+    medium_risk_terms:
+      - "inspired by"
+      - "fan art"
+      - "tribute"
+  copyright_risk:
+    protected_content_patterns:
+      - "lyrics"
+      - "movie quote"
+      - "tv quote"
+      - "exact character"
+      - "book quote"
+  publish_decision:
+    min_overall_score_for_publish: 72
+    min_compliance_score_for_publish: 75
+    blocked_risk_levels:
+      - High
+      - Critical
+  validation_rules:
+    require_unique_tags: true
+    require_non_spam_title: true
+    require_policy_pass: true

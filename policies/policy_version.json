@@ -1,0 +1,9 @@
+{
+  "policy_version": "2026.08.07",
+  "last_updated": "2026-08-07",
+  "policy_notes": [
+    "Safety-first default configuration for Etsy SEO and compliance checks.",
+    "Review regularly against current Etsy policy updates.",
+    "Do not auto-approve listings with high legal risk signals."
+  ]
+}

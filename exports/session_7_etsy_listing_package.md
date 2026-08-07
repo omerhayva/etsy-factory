@@ -1,0 +1,55 @@
+# Etsy SEO Compliance Listing Package
+
+Total listings: 64
+
+## Listing Decisions
+- vintage dog lover lover | Christmas Ornament | NEEDS IMPROVEMENT | score=86.58
+- vintage dog lover dog | Christmas Ornament | NEEDS IMPROVEMENT | score=86.57
+- vintage dog lover vintage | Christmas Ornament | NEEDS IMPROVEMENT | score=86.6
+- vintage dog lover lover | Christmas Ornament | NEEDS IMPROVEMENT | score=84.18
+- vintage dog lover dog | Christmas Ornament | NEEDS IMPROVEMENT | score=84.17
+- vintage dog lover vintage | Christmas Ornament | NEEDS IMPROVEMENT | score=84.2
+- vintage dog lover lover | Mother's Day Gifts | NEEDS IMPROVEMENT | score=86.51
+- vintage dog lover dog | Mother's Day Gifts | NEEDS IMPROVEMENT | score=86.5
+- vintage dog lover vintage | Mother's Day Gifts | NEEDS IMPROVEMENT | score=86.53
+- vintage dog lover lover | Mother's Day Gifts | NEEDS IMPROVEMENT | score=84.11
+- vintage dog lover dog | Mother's Day Gifts | NEEDS IMPROVEMENT | score=84.1
+- vintage dog lover vintage | Mother's Day Gifts | NEEDS IMPROVEMENT | score=84.13
+- vintage dog lover lover | Mug | NEEDS IMPROVEMENT | score=86.18
+- vintage dog lover dog | Mug | NEEDS IMPROVEMENT | score=86.17
+- vintage dog lover vintage | Mug | NEEDS IMPROVEMENT | score=86.2
+- vintage dog lover lover | Mug | NEEDS IMPROVEMENT | score=83.78
+- vintage dog lover dog | Mug | NEEDS IMPROVEMENT | score=83.77
+- vintage dog lover vintage | Mug | NEEDS IMPROVEMENT | score=83.8
+- vintage dog lover lover | Valentine's Gifts | NEEDS IMPROVEMENT | score=86.44
+- vintage dog lover dog | Valentine's Gifts | NEEDS IMPROVEMENT | score=86.43
+- vintage dog lover vintage | Valentine's Gifts | NEEDS IMPROVEMENT | score=86.46
+- vintage dog lover lover | Valentine's Gifts | NEEDS IMPROVEMENT | score=84.04
+- vintage dog lover dog | Valentine's Gifts | NEEDS IMPROVEMENT | score=84.03
+- vintage dog lover vintage | Valentine's Gifts | NEEDS IMPROVEMENT | score=84.06
+- vintage dog lover | Christmas Ornament | NEEDS IMPROVEMENT | score=86.13
+- vintage dog lover | Christmas Ornament | NEEDS IMPROVEMENT | score=83.73
+- vintage dog lover | Mother's Day Gifts | NEEDS IMPROVEMENT | score=84.65
+- vintage dog lover | Mother's Day Gifts | NEEDS IMPROVEMENT | score=82.25
+- vintage dog lover | Mug | NEEDS IMPROVEMENT | score=85.73
+- vintage dog lover | Mug | NEEDS IMPROVEMENT | score=83.33
+- vintage dog lover | Valentine's Gifts | NEEDS IMPROVEMENT | score=84.58
+- vintage dog lover | Valentine's Gifts | NEEDS IMPROVEMENT | score=82.18
+- astronomy shirt | Mug | NEEDS IMPROVEMENT | score=83.94
+- astronomy shirt | Mug | NEEDS IMPROVEMENT | score=81.54
+- minimal line art mug | Mug | NEEDS IMPROVEMENT | score=85.26
+- pet memorial poster | Mug | NEEDS IMPROVEMENT | score=84.81
+- cottagecore tote bag | Mug | NEEDS IMPROVEMENT | score=84.0
+- minimal line art mug | Mug | NEEDS IMPROVEMENT | score=82.86
+- pet memorial poster | Mug | NEEDS IMPROVEMENT | score=82.41
+- cottagecore tote bag | Mug | NEEDS IMPROVEMENT | score=81.6
+- astronomy shirt | Sticker | NEEDS IMPROVEMENT | score=84.29
+- astronomy shirt | Sticker | NEEDS IMPROVEMENT | score=81.89
+- minimal line art mug | Sticker | NEEDS IMPROVEMENT | score=83.87
+- pet memorial poster | Sticker | NEEDS IMPROVEMENT | score=84.92
+- cottagecore tote bag | Sticker | NEEDS IMPROVEMENT | score=84.11
+- minimal line art mug | Sticker | NEEDS IMPROVEMENT | score=81.47
+- pet memorial poster | Sticker | NEEDS IMPROVEMENT | score=82.52
+- cottagecore tote bag | Sticker | NEEDS IMPROVEMENT | score=81.71
+- astronomy shirt | Poster | NEEDS IMPROVEMENT | score=84.12
+- astronomy shirt | Poster | NEEDS IMPROVEMENT | score=81.72
