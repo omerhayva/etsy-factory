@@ -1,5 +1,7 @@
 # SEO Compliance Intelligence Report
 
+> Historical documentation for the previous POD factory prototype. The active application is now the Etsy → Pinterest Scheduler; see `README.md`.
+
 ## Ozet
 SEO, Compliance & Listing Intelligence Engine platformin final quality gate katmani olarak eklendi. Bu motor her listingi yayin oncesi SEO, policy, spam ve hukuki risk acisindan degerlendirir.
 

@@ -1,68 +1,10 @@
 app:
-  name: Etsy POD AI Factory
-  database_path: database/etsy_pod_factory.sqlite3
+  name: Etsy to Pinterest Scheduler
+  database_path: database/etsy_pinterest.sqlite3
   export_dir: exports
 
-research:
-  search_terms:
-    - vintage dog lover
-    - astronomy shirt
-    - cottagecore tote bag
-    - minimal line art mug
-    - pet memorial poster
-  categories:
-    - Pets
-    - Camping
-    - Fishing
-    - Christian
-    - Islamic
-    - Family
-    - Teacher
-    - Nurse
-    - Halloween
-    - Christmas
-    - Gaming
-    - Books
-    - Sports
-    - Motivation
-    - Nature
-    - Space
-    - Funny
-    - Minimalist
-    - Vintage
-    - Retro
-  providers:
-    - etsy_search
-
-products:
-  catalog:
-    t-shirt:
-      base_price: 24.0
-      margin: 0.62
-      pod_compatibility: 95
-      design_difficulty: 50
-    hoodie:
-      base_price: 42.0
-      margin: 0.58
-      pod_compatibility: 88
-      design_difficulty: 58
-    mug:
-      base_price: 18.0
-      margin: 0.67
-      pod_compatibility: 96
-      design_difficulty: 42
-    poster:
-      base_price: 28.0
-      margin: 0.72
-      pod_compatibility: 91
-      design_difficulty: 46
-    phone case:
-      base_price: 22.0
-      margin: 0.55
-      pod_compatibility: 86
-      design_difficulty: 64
-    tote bag:
-      base_price: 26.0
-      margin: 0.60
-      pod_compatibility: 90
-      design_difficulty: 49
+pinterest_scheduler:
+  timezone: Europe/Istanbul
+  poll_seconds: 30
+  stale_job_minutes: 20
+  default_api_base_url: https://api-sandbox.pinterest.com/v5

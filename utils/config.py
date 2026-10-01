@@ -6,12 +6,17 @@ from typing import Any
 
 import yaml
 
-
 DEFAULT_CONFIG: dict[str, Any] = {
     "app": {
-        "name": "Etsy POD AI Factory",
-        "database_path": "database/etsy_pod_factory.sqlite3",
+        "name": "Etsy to Pinterest Scheduler",
+        "database_path": "database/etsy_pinterest.sqlite3",
         "export_dir": "exports",
+    },
+    "pinterest_scheduler": {
+        "timezone": "Europe/Istanbul",
+        "poll_seconds": 30,
+        "stale_job_minutes": 20,
+        "default_api_base_url": "https://api-sandbox.pinterest.com/v5",
     },
     "research": {
         "search_terms": [

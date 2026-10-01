@@ -1,5 +1,7 @@
 # Commercial Validation Report
 
+> Historical documentation for the previous POD factory prototype. The active application is now the Etsy → Pinterest Scheduler; see `README.md`.
+
 ## Ozet
 Commercial Validation Engine, Etsy POD uretim zincirinin ticari son kapisi olarak eklendi. Gorevi yeni urun yaratmak degil; uretimi zayif, riskli veya ticari olarak zayif urunleri elmek ve sadece yayinlanmaya deger olanlari onermek.
 

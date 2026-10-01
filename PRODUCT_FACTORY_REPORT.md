@@ -1,5 +1,7 @@
 # Product Factory Report
 
+> Historical documentation for the previous POD factory prototype. The active application is now the Etsy → Pinterest Scheduler; see `README.md`.
+
 ## Purpose
 Module 09 adds an orchestration layer that connects the existing research, niche intelligence, product intelligence, design intelligence, SEO/compliance, and commercial validation engines into one automated workflow.
 
