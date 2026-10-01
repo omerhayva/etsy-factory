@@ -1,29 +1,24 @@
-# Final Report
+# Etsy → Pinterest Scheduler — Durum Raporu
 
-## Completed Features
+## Amaç
+Kullanıcının mevcut Etsy listing'lerini Pinterest board'larında düzenli paylaşmak; içerik ve zaman planını yönetmek, Pin'leri resmi Pinterest API v5 ile yayımlamak.
 
-- Etsy market research engine with scraper fallback data.
-- Niche analysis and opportunity scoring.
-- POD product selector for common merchandise.
-- AI-style design prompt generator.
-- Etsy SEO generator with titles, descriptions, tags, keywords, and pricing.
-- SQLite database with the requested tables.
-- Streamlit dashboard with core workflow pages.
-- JSON and CSV export support.
-- Daily discovery automation via `daily_product_discovery()`.
-- Pytest coverage for database, scoring, SEO, and product selection.
+## Uygulanan akış
 
-## How To Run
+1. Etsy Open API v3 üzerinden aktif listing senkronizasyonu veya CSV import.
+2. Listing görseli, Etsy bağlantısı, title, description ve tags ile Pin taslağı.
+3. Tekil veya aralıklı toplu zamanlama.
+4. SQLite tabanlı kuyruk, durum takibi, hata kaydı ve manuel yeniden deneme.
+5. Ayrı worker süreci ile zamanı gelen Pin'leri Pinterest'e yayımlama.
 
-```bash
-pip install -r requirements.txt
-streamlit run main.py
-pytest
-```
+## Test durumu
 
-## Future Improvements
+- Etsy/Pinterest API çağrıları için izole mock testleri.
+- CSV import, SQLite kuyruk/claim, Pin medya payload'ı ve worker akışı test kapsamındadır.
+- Gerçek platforma yayın için kullanıcının kendi developer uygulama bilgileri ve OAuth izinleri gerekir.
 
-- Add live Etsy data ingestion from approved sources.
-- Improve trend detection with historical snapshots.
-- Add richer product visual generation support.
-- Add scheduled background execution for daily discovery.
+## Güvenlik
+
+API bilgileri `.env`/yerel OAuth token dosyasında tutulur; repo'ya eklenmez. Yeni kurulumda Pinterest Sandbox varsayılandır. Production'a geçiş açıkça yapılandırılır.
+
+> Eski POD araştırma ve `Product Factory` paketleri repoda legacy kod olarak durmaktadır; `main.py` artık bu modülleri başlatmaz.

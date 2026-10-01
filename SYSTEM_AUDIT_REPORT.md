@@ -1,5 +1,7 @@
 # System Audit Report
 
+> Historical documentation for the previous POD factory prototype. The active application is now the Etsy → Pinterest Scheduler; see `README.md`.
+
 ## Scope
 
 Audit and stabilization completed for the existing Etsy-POD-AI-Factory codebase without introducing new modules or changing overall architecture.

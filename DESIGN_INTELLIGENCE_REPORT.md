@@ -1,5 +1,7 @@
 # Design Intelligence Report
 
+> Historical documentation for the previous POD factory prototype. The active application is now the Etsy → Pinterest Scheduler; see `README.md`.
+
 ## Ozet
 Design Intelligence Engine, platformin kreatif karar katmani olarak eklendi. Bu motor sadece prompt uretmez; her niche ve urun icin en yuksek ticari olasiliga sahip gorsel stili secer.
 

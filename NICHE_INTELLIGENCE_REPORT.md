@@ -1,5 +1,7 @@
 # Niche Intelligence Report
 
+> Historical documentation for the previous POD factory prototype. The active application is now the Etsy → Pinterest Scheduler; see `README.md`.
+
 ## Architecture
 
 The Niche Intelligence Engine is implemented as a separate package that extends the current system:

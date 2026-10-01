@@ -1,5 +1,7 @@
 # Product Intelligence Engine Report
 
+> Historical documentation for the previous POD factory prototype. The active application is now the Etsy → Pinterest Scheduler; see `README.md`.
+
 ## Ozet
 Product Intelligence Engine, mevcut Research + Niche Intelligence verilerini urun secim kararina donusturen adapter tabanli bir motor olarak eklendi. Cozum, veritabani katmanini genisletir, provider bagimsiz urun degerlendirmesi yapar, skorlar ve raporlar uretir.
 

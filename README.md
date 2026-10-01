@@ -1,142 +1,115 @@
-# Etsy-POD-AI-Factory
+# Etsy → Pinterest Scheduler
 
-Simple Streamlit MVP for finding Etsy print-on-demand opportunities, generating product ideas, and exporting ready-to-list assets.
+Streamlit uygulaması Etsy'deki mevcut listing'leri Pinterest Pin'lerine dönüştürmek, paylaşım kuyruğu/takvimi oluşturmak ve zamanı gelen Pin'leri Pinterest API v5 üzerinden yayımlamak için hazırlanmıştır.
 
-## Installation
+## Neler yapar?
 
-1. Create and activate a virtual environment.
+- Etsy Open API v3 ile aktif listing'leri ve ilk ürün görselini senkronize eder.
+- Etsy API bağlantısı olmadan CSV ile listing içe aktarmayı destekler.
+- Listing'in başlık/açıklama/etiketlerinden Pinterest Pin taslağı oluşturur; paylaşım metni düzenlenebilir.
+- Pin'i seçilen board'a, seçilen yerel tarih ve saatte kuyruğa alır.
+- Birden fazla listing'i belirli saat aralığıyla sıraya koyar.
+- Ayrı bir worker süreci vakti gelen Pin'leri Pinterest API v5 ile yayımlar.
+- Durum, hata, deneme sayısı ve Pinterest Pin bağlantısını SQLite'ta saklar.
+- Access token süresi dolduğunda mevcut refresh token ile yenilemeyi dener.
+- Pinterest API varsayılanı güvenli test amacıyla **Sandbox**'tır. Canlı paylaşım için production URL'yi açıkça seçin.
+
+> Uygulama listing görselini olduğu gibi kullanır; yeni tasarım/görsel üretmez ve Etsy listing'lerini değiştirmez. İlk sürümde Pin başlığı/açıklaması kullanıcı tarafından düzenlenebilir.
+
+## Kurulum
 
 ```bash
 python -m venv .venv
-.venv\Scripts\activate
 ```
 
-2. Install dependencies.
+Windows:
 
-```bash
+```powershell
+.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
-## Running The Application
+macOS / Linux:
+
+```bash
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+## Uygulamayı çalıştırma
 
 ```bash
 streamlit run main.py
 ```
 
-The app uses:
+Dashboard içinden:
 
-- SQLite database: `database/etsy_pod_factory.sqlite3`
-- Export output directory: `exports/`
+1. **Etsy Listing'leri** sayfasında Etsy API'yi senkronize edin veya CSV yükleyin.
+2. **Paylaşım Planı** sayfasında board ID, Pin metni ve yayın zamanını seçin.
+3. **Kuyruk / Geçmiş** sayfasında işleri izleyin, başarısız gönderimleri inceleyin ve gerekirse yeniden kuyruğa alın.
 
-## Running Tests
+### CSV formatı
+
+Uygulama `examples/etsy_listings_template.csv` şablonunu kullanır. Başlıklar:
+
+```text
+listing_id,title,description,listing_url,image_url,tags,price,state
+```
+
+`listing_id`, `title`, `listing_url` ve doğrudan erişilebilen `image_url` gereklidir. Etsy CSV'sindeki `Listing ID`, `Title`, `URL`, `Image 1` gibi başlıklar da tanınır. Etiketler virgül veya noktalı virgülle ayrılabilir. Listing ID boşsa Etsy URL'sinden çıkartılır.
+
+## Gerçek zamanlı paylaşım için scheduler
+
+Streamlit arayüzü planlı işleri kuyruğa alır. Zamanı geldiğinde yayımlama için worker'ın ayrıca ve sürekli çalışması gerekir:
 
 ```bash
-pytest
+python -m pinterest_automation.worker
 ```
 
-## Current Features
+Worker çalıştığını SQLite heartbeat kaydıyla dashboard'da gösterir. Bilgisayar kapanırsa veya worker durursa planlanan saatte gönderim yapılamaz. Sürekli kullanımda worker'ı açık kalan bir sunucuda `systemd`, Docker restart policy veya benzeri bir süreç yöneticisiyle çalıştırın.
 
-- Etsy market research with scraper fallback
-- Modular research provider architecture
-- Professional research session orchestration
-- Keyword collection and keyword metrics tracking
-- Niche discovery with configurable categories
-- Trend classification and trend history
-- Competitor, pricing, and review intelligence layers
-- Opportunity score + confidence score + reasoning
-- Structured market report generation
-- Market report CSV and JSON exports
-- Niche Intelligence Engine for business decision scoring
-- Audience, buyer intent, seasonality, giftability, competition, evergreen analysis
-- Niche classification (Gold/Silver/Bronze/Watchlist/Avoid)
-- Niche recommendation ranking and intelligence reports
-- Niche opportunity scoring
-- POD product recommendations
-- Design prompt generation
-- Etsy SEO listing generation
-- SQLite persistence
-- JSON and CSV export
-- Streamlit dashboard
-- Daily discovery automation
+Bir defalık kontrol:
 
-## Project Structure
-
-```
-Etsy-POD-AI-Factory/
-├── dashboard/
-├── database/
-├── design/
-├── exports/
-├── products/
-├── research/
-│   ├── base_provider.py
-│   ├── research_manager.py
-│   ├── keyword_collector.py
-│   ├── trend_analyzer.py
-│   ├── niche_finder.py
-│   ├── competitor_analyzer.py
-│   ├── pricing_analyzer.py
-│   ├── review_analyzer.py
-│   ├── opportunity_engine.py
-│   └── market_report.py
-├── niche_intelligence/
-│   ├── engine.py
-│   ├── models.py
-│   ├── scoring.py
-│   ├── audience.py
-│   ├── seasonality.py
-│   ├── competition.py
-│   ├── giftability.py
-│   ├── evergreen.py
-│   ├── recommendations.py
-│   └── report_generator.py
-├── scraper/
-├── scoring/
-├── seo/
-├── tests/
-├── utils/
-├── config.yaml
-├── main.py
-├── requirements.txt
-└── README.md
+```bash
+python -m pinterest_automation.worker --once
 ```
 
-## Notes
+## API bağlantısı ve gizli bilgiler
 
-- No API keys are required for the current MVP.
-- Live Etsy scraping can fail due to network or markup changes; the app safely falls back to synthetic market data.
+Gerçek API erişimi için Etsy ve Pinterest developer uygulamalarının kurulması ve kullanıcı OAuth izinlerinin alınması gerekir. Bu erişimler olmadan CSV ile içe aktarma ve paylaşım kuyruğu çalışır; **gerçek Pinterest yayını yapılamaz**. API anahtarlarını veya token'ları sohbet içinde paylaşmayın.
 
-## Research Workflow
+1. `.env.example` dosyasını proje kökünde `.env` adıyla kopyalayın.
+2. Değerleri kendi ortamınızda doldurun. `.env` ve yenilenen OAuth token dosyası Git'e eklenmez.
+3. Pinterest için `boards:read` ve `pins:write`; Etsy listing'lerini okumak için `listings_r` izni gerekir. Resmî kılavuzlar: [Etsy OAuth](https://developers.etsy.com/documentation/essentials/authentication/), [Pinterest OAuth](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/), [Pinterest Create Pin](https://developers.pinterest.com/docs/api/v5/pins-create/).
+4. İlk denemeyi Pinterest Sandbox ile yapın. Canlı yayın için `PINTEREST_API_BASE_URL=https://api.pinterest.com/v5` ayarını açıkça yapın.
 
-1. Start a research session with one or more seed terms.
-2. Collect keywords from one or many providers.
-3. Discover niche candidates and categorize them.
-4. Collect competitor and trend signals.
-5. Compute pricing, review, and opportunity intelligence.
-6. Persist all outputs to SQLite research tables.
-7. Generate market reports and export JSON/CSV.
+Önemli ayarlar:
 
-## Future Provider Integration
+| Değişken | Açıklama |
+| --- | --- |
+| `ETSY_API_KEYSTRING`, `ETSY_SHARED_SECRET` | Etsy Open API anahtar çifti |
+| `ETSY_SHOP_ID` | Etsy mağaza ID'si |
+| `ETSY_ACCESS_TOKEN`, `ETSY_REFRESH_TOKEN` | Etsy OAuth token'ları (`listings_r` scope) |
+| `PINTEREST_CLIENT_ID`, `PINTEREST_CLIENT_SECRET` | Pinterest developer uygulaması |
+| `PINTEREST_ACCESS_TOKEN`, `PINTEREST_REFRESH_TOKEN` | Pinterest kullanıcı OAuth token'ları |
+| `PINTEREST_API_BASE_URL` | Varsayılan Sandbox; canlı API'ye geçmek için production adresi |
+| `PINTEREST_DEFAULT_BOARD_ID` | Formlarda ön seçili board (isteğe bağlı) |
+| `APP_TIMEZONE` | Takvim saat dilimi; varsayılan `Europe/Istanbul` |
 
-- New data source integration is plug-and-play through `BaseResearchProvider`.
-- To add providers such as Google Trends, Pinterest, Reddit, TikTok, Amazon, eRank, EverBee, Marmalead, or CSV import:
-	- implement `collect_keywords`, `collect_competitors`, and `collect_trends`,
-	- register provider in `ResearchManager` configuration,
-	- no core orchestration changes are required.
+OAuth token yenilemesi başarısız olursa bağlantı Ayarlar sayfasında hata verir. Refresh token'ın geçerlilik süresi ve uygulama erişim seviyesi ilgili platform tarafından belirlenir.
 
-## Niche Intelligence Workflow
+## Testler
 
-1. Pull latest scored niches from the Research Engine output.
-2. Derive audience groups and buyer intent.
-3. Detect seasonality and evergreen profile.
-4. Score competition level and gift market strength.
-5. Calculate overall niche business score and confidence.
-6. Classify niche as Gold, Silver, Bronze, Watchlist, or Avoid.
-7. Persist recommendation records and export reports in JSON/CSV.
+```bash
+pytest -q
+```
 
-## Future Improvements
+API testleri gerçek Etsy/Pinterest hesabına istek göndermez; HTTP istemcileri mock'lanır. Böylece testler token veya ağ bağlantısı gerektirmez.
 
-- Connect to approved data sources or APIs
-- Add richer seasonal trend signals
-- Support batch niche research from CSV input
-- Add image prompt presets for different POD providers
+## Mevcut kapsam ve notlar
+
+- Pinterest Pin'leri API'de kullanıcı adına oluşturulur; başlık 100, açıklama 800, alt metin 500 karakter sınırında tutulur.
+- Listing görseli Pinterest'e base64 medya kaynağı olarak gönderilir; Etsy CDN URL'sinin Pinterest tarafından ayrıca indirilmesine bağımlı değildir.
+- Aynı listing/board/zaman için yinelenen aktif kuyruk işi engellenir.
+- Gönderim sırasında worker kapanırsa olası çift Pin riskine karşı iş otomatik tekrar gönderilmez; geçmişte başarısız olarak işaretlenir ve kullanıcı kontrolünden sonra yeniden kuyruğa alınabilir.
+- Repo içindeki `research/`, `product_factory/` ve ilgili intelligence modülleri eski POD araştırma prototipinden kalmıştır; yeni `main.py` akışında kullanılmaz.

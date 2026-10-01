@@ -1,5 +1,7 @@
 # Research Engine Report
 
+> Historical documentation for the previous POD factory prototype. The active application is now the Etsy → Pinterest Scheduler; see `README.md`.
+
 ## Modules Created
 
 Inside `research/`:
